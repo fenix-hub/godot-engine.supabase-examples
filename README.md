@@ -11,9 +11,9 @@ Examples are developed using [fenix-hub/godot-engine.supabase](https://github.co
 - [**Godotgram**](/instagram-clone) (Multiplatform Instagram Clone)
 
 ### List of web demo
-- [**web ToDot List**](https://fenix-hub.github.io/supabase/todo-list/demo.html)
-- [**web GDChat**](https://fenix-hub.github.io/supabase/realtime-chat/demo.html)
-- [**web Godotgram**](https://fenix-hub.github.io/supabase/instagram-clone/demo.html)
+- [**web ToDot List**](https://fenix-hub.github.io/supabase/todo-list/demo)
+- [**web GDChat**](https://fenix-hub.github.io/supabase/realtime-chat/demo)
+- [**web Godotgram**](https://fenix-hub.github.io/supabase/instagram-clone/demo)
 
 ### Folder structure
 Each example consists of its *source code* (in `/source`) written in gdscript plus some *exported binaries* (in `/export`) for different platforms (ex. Windows, Android, Linux, HTML).  
