@@ -3,6 +3,7 @@
 # Godot Engine - Supabase Examples
 
 A library containing some examples made with Godot Engine as a client for Supabase backend.  
+Examples are developed using [fenix-hub/godot-engine.supabase](https://github.com/fenix-hub/godot-engine.supabase) plugin for Godot Engine.
 
 ### List of examples
 - [**ToDot List**](/todo-list) (Multiplatform Todo list - following [Todo list demo](https://github.com/supabase/supabase/tree/master/examples/nextjs-todo-list) by [supabase](https://supabase.io/))
