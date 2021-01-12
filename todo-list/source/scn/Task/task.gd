@@ -6,7 +6,6 @@ onready var check : CheckBox = $Check
 
 var id : int
 var is_complete : bool setget set_is_complete
-var deleting : bool = false
 
 func _ready():
 	Supabase.database.connect("deleted", self, "_on_deleted")
@@ -24,8 +23,7 @@ func set_is_complete(complete : bool):
 	check.pressed = (is_complete)
 
 func _on_RemoveBtn_pressed():
-	deleting = true
 	Supabase.database.query(SupabaseQuery.new().from("todos").delete().eq("id",str(id)))
 
-func _on_deleted():
-	if deleting : queue_free()
+func _on_deleted(delete_result : Array):
+	if delete_result[0].id == id : queue_free()

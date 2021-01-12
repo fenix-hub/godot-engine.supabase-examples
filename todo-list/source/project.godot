@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Control",
+"class": "LoadingScene",
+"language": "GDScript",
+"path": "res://scn/Loading/loading.gd"
+}, {
 "base": "HTTPRequest",
 "class": "SupabaseAuth",
 "language": "GDScript",
@@ -45,6 +50,7 @@ _global_script_classes=[ {
 "path": "res://scn/Task/task.gd"
 } ]
 _global_script_class_icons={
+"LoadingScene": "",
 "SupabaseAuth": "",
 "SupabaseAuthError": "",
 "SupabaseDatabase": "",
@@ -58,6 +64,8 @@ _global_script_class_icons={
 
 config/name="supabase-demo.todo-list"
 run/main_scene="res://scn/Main/main.tscn"
+boot_splash/image="res://icon.png"
+boot_splash/fullsize=false
 config/icon="res://addons/supabase/icon.svg"
 
 [audio]
@@ -72,8 +80,6 @@ Supabase="*res://addons/supabase/Supabase/supabase.gd"
 
 window/dpi/allow_hidpi=true
 window/handheld/orientation="portrait"
-window/stretch/mode="2d"
-window/stretch/aspect="expand"
 
 [editor_plugins]
 
@@ -86,5 +92,5 @@ environment/default_environment="res://default_env.tres"
 
 [supabase]
 
-config/supabaseUrl=""
-config/supabaseKey=""
+config/supabaseUrl="https://ijmqgblxaajvkynqrqms.supabase.co"
+config/supabaseKey="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VydmljZV9yb2xlIiwiaWF0IjoxNjEwMjkwMDY3LCJleHAiOjE5MjU4NjYwNjd9.ZEuL2X7cE-F8SuInbB-9LSfoNHY4c9HfXSMQJH8eqB4"

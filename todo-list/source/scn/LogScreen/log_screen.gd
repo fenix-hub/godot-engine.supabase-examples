@@ -13,6 +13,7 @@ func _ready():
 	error_lbl.hide()
 
 func _on_auth_error(error : SupabaseAuthError):
+	get_tree().call_group("loading_scene", "set_loading")
 	print(error)
 	print_error(str(error))
 	match error.type :
@@ -31,7 +32,10 @@ func _on_SignInBtn_pressed():
 	mail = user_email.get_text()
 	pwd = user_passwrd.get_text()
 	if mail.length() > 1 and pwd.length() > 1:
-		 sign_in(mail, pwd)
+		sign_in(mail, pwd)
+		get_tree().call_group("loading_scene", "set_loading", true)
+	else:
+		print_error("'mail' and 'password' fields must be filled.")
 
 func print_error(text : String):
 	error_lbl.show()

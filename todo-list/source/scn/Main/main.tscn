@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scn/Main/main.gd" type="Script" id=1]
 [ext_resource path="res://fonts/SEGOEUIB.TTF" type="DynamicFontData" id=2]
 [ext_resource path="res://fonts/SEGOEUI.TTF" type="DynamicFontData" id=3]
 [ext_resource path="res://fonts/SEGUIBL.TTF" type="DynamicFontData" id=4]
 [ext_resource path="res://scn/LogScreen/log_screen.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scn/Loading/loading.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 3 )
@@ -67,6 +68,8 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ErrorTimer" type="Timer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -177,7 +180,7 @@ align = 2
 
 [node name="LogScreen" parent="." instance=ExtResource( 5 )]
 
-[node name="ErrorTimer" type="Timer" parent="."]
+[node name="Loading" parent="." instance=ExtResource( 6 )]
+[connection signal="timeout" from="ErrorTimer" to="." method="_on_ErrorTimer_timeout"]
 [connection signal="pressed" from="MainContainer/NewTask/AddTaskBtn" to="." method="_on_add_new_task"]
 [connection signal="pressed" from="MainContainer/UserContainer/LogOut" to="." method="_on_LogOut_pressed"]
-[connection signal="timeout" from="ErrorTimer" to="." method="_on_ErrorTimer_timeout"]

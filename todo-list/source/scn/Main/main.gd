@@ -6,12 +6,10 @@ onready var add_task_btn : Button = $MainContainer/NewTask/AddTaskBtn
 onready var log_screen : Control = $LogScreen
 onready var user_id : Label = $MainContainer/UserContainer/UserId
 onready var error_lbl : Label = $MainContainer/ErrorLbl
+onready var loading : LoadingScene = $Loading 
 
 var task_scene : PackedScene = preload("res://scn/Task/task.tscn")
 var user : SupabaseUser
-
-var tasks : Array = []
-var last_id : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,7 +24,6 @@ func _ready():
 
 func clear_tasks():
 	for task in task_list.get_children() : task.queue_free()
-	tasks.clear()
 	user_id.set_text("user-id")
 
 func _on_signed(user : SupabaseUser):
@@ -36,32 +33,29 @@ func _on_signed(user : SupabaseUser):
 	var tasks_found : Array = yield(Supabase.database, "selected")
 	for task_found in tasks_found:
 		add_task(task_found.task, task_found.is_complete, task_found.id)
-		if last_id < task_found.id: last_id = task_found.id
 	log_screen.hide()
+	get_tree().call_group("loading_scene", "set_loading")
 
 func add_task(text : String, is_complete : bool = false, id : int = -1):
 	var new_task : Task = task_scene.instance()
-	tasks.append(new_task)
 	task_list.add_child(new_task)
 	new_task.content.text = text
-	if id == -1 : 
-		last_id+=1
-		new_task.id = last_id
-	else: new_task.id = id
+	new_task.id = id
 	new_task.set_is_complete(is_complete)
+	loading.set_loading()
 
 func _on_add_new_task():
 	error_lbl.hide()
 	if task_text.get_text().length() > 1:
+		loading.set_loading(true)
 		Supabase.database.query(SupabaseQuery.new().from("todos").insert([{"user_id":user.id, "task":task_text.get_text(), "is_complete":false}]))
-		yield(Supabase.database, "inserted")
-		add_task(task_text.get_text())
 		task_text.set_text("")
 	else:
 		print_error("Cannot create an empty task!")
 
-func _on_inserted():
-	pass
+func _on_inserted(insert_result : Array):
+	for task in insert_result:
+		add_task(task.task, task.is_complete, task.id)
 
 func _on_selected(result : Array):
 	pass

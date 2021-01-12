@@ -101,13 +101,13 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.392157 )
 
 [node name="LogPanel" type="PanelContainer" parent="."]
-anchor_left = 0.5
+anchor_left = 0.312
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.687
 anchor_bottom = 0.5
-margin_left = -192.0
+margin_left = 0.511993
 margin_top = -169.5
-margin_right = 192.0
+margin_right = 0.511963
 margin_bottom = 169.5
 grow_horizontal = 2
 grow_vertical = 2
