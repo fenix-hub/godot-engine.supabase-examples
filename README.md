@@ -8,11 +8,13 @@ Examples are developed using [fenix-hub/godot-engine.supabase](https://github.co
 ### List of examples
 - [**ToDot List**](/todo-list) (Multiplatform Todo list - following [Todo list demo](https://github.com/supabase/supabase/tree/master/examples/nextjs-todo-list) by [supabase](https://supabase.io/))
 - [**gdChat**](/realtime-chat) (Multiplatform Realtime chat - following [Chat demo](https://github.com/supabase/supabase/tree/master/examples/nextjs-slack-clone) by [supabase](https://supabase.io/))
+- [**TicTacDot**](/tictactoe) (Multiplatform Realtime TicTacToe)
 - [**Godotgram**](/instagram-clone) (Multiplatform Instagram Clone)
 
 ### List of web demo
 - [**web ToDot List**](https://fenix-hub.github.io/supabase/todo-list/demo)
 - [**web GDChat**](https://fenix-hub.github.io/supabase/realtime-chat/demo)
+- [**web TicTacDot**](https://fenix-hub.github.io/supabase/tictactoe/demo)
 - [**web Godotgram**](https://fenix-hub.github.io/supabase/instagram-clone/demo)
 
 ### Folder structure
