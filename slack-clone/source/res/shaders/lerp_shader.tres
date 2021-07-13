@@ -1,0 +1,145 @@
+[gd_resource type="ShaderMaterial" load_steps=15 format=2]
+
+[ext_resource path="res://main/res/imgs/shine.png" type="Texture" id=1]
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id=1]
+
+[sub_resource type="VisualShaderNodeVectorCompose" id=2]
+
+[sub_resource type="VisualShaderNodeVectorScalarMix" id=3]
+output_port_for_preview = 0
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id=4]
+
+[sub_resource type="VisualShaderNodeInput" id=5]
+output_port_for_preview = 0
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=6]
+uniform_name = "time_multiplier"
+
+[sub_resource type="StreamTexture" id=7]
+flags = 4
+
+[sub_resource type="VisualShaderNodeTexture" id=8]
+source = 2
+texture = SubResource( 7 )
+
+[sub_resource type="VisualShaderNodeTexture" id=9]
+texture = ExtResource( 1 )
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeScalarOp" id=10]
+output_port_for_preview = 0
+operator = 2
+
+[sub_resource type="VisualShaderNodeScalarOp" id=11]
+output_port_for_preview = 0
+
+[sub_resource type="VisualShaderNodeInput" id=12]
+output_port_for_preview = 0
+input_name = "uv"
+
+[sub_resource type="VisualShader" id=13]
+code = "shader_type canvas_item;
+uniform float time_multiplier;
+uniform sampler2D tex_frg_3 : hint_albedo;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Texture:2
+	vec3 n_out2p0;
+	float n_out2p1;
+	{
+		vec4 _tex_read = texture(TEXTURE , UV.xy);
+		n_out2p0 = _tex_read.rgb;
+		n_out2p1 = _tex_read.a;
+	}
+
+// Input:9
+	vec3 n_out9p0 = vec3(UV, 0.0);
+
+// VectorDecompose:10
+	float n_out10p0 = n_out9p0.x;
+	float n_out10p1 = n_out9p0.y;
+	float n_out10p2 = n_out9p0.z;
+
+// Input:15
+	float n_out15p0 = TIME;
+
+// ScalarUniform:16
+	float n_out16p0 = time_multiplier;
+
+// ScalarOp:5
+	float n_out5p0 = n_out15p0 * n_out16p0;
+
+// ScalarOp:8
+	float n_out8p0 = n_out10p0 + n_out5p0;
+
+// VectorCompose:11
+	vec3 n_out11p0 = vec3(n_out8p0, n_out10p1, n_out10p2);
+
+// Texture:3
+	vec4 tex_frg_3_read = texture(tex_frg_3, n_out11p0.xy);
+	vec3 n_out3p0 = tex_frg_3_read.rgb;
+	float n_out3p1 = tex_frg_3_read.a;
+
+// VectorDecompose:14
+	float n_out14p0 = n_out3p0.x;
+	float n_out14p1 = n_out3p0.y;
+	float n_out14p2 = n_out3p0.z;
+
+// VectorScalarMix:12
+	vec3 n_in12p1 = vec3(1.00000, 1.00000, 1.00000);
+	vec3 n_out12p0 = mix(n_out2p0, n_in12p1, n_out14p0);
+
+// Output:0
+	COLOR.rgb = n_out12p0;
+	COLOR.a = n_out2p1;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -740.481, 236 )
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2( 400, 120 )
+nodes/fragment/2/node = SubResource( 8 )
+nodes/fragment/2/position = Vector2( -480, 100 )
+nodes/fragment/3/node = SubResource( 9 )
+nodes/fragment/3/position = Vector2( -400, 340 )
+nodes/fragment/5/node = SubResource( 10 )
+nodes/fragment/5/position = Vector2( -1040, 200 )
+nodes/fragment/8/node = SubResource( 11 )
+nodes/fragment/8/position = Vector2( -800, 200 )
+nodes/fragment/9/node = SubResource( 12 )
+nodes/fragment/9/position = Vector2( -1120, 440 )
+nodes/fragment/10/node = SubResource( 1 )
+nodes/fragment/10/position = Vector2( -920, 480 )
+nodes/fragment/11/node = SubResource( 2 )
+nodes/fragment/11/position = Vector2( -620, 420 )
+nodes/fragment/12/node = SubResource( 3 )
+nodes/fragment/12/position = Vector2( 60, 120 )
+nodes/fragment/14/node = SubResource( 4 )
+nodes/fragment/14/position = Vector2( -200, 340 )
+nodes/fragment/15/node = SubResource( 5 )
+nodes/fragment/15/position = Vector2( -1360, 200 )
+nodes/fragment/16/node = SubResource( 6 )
+nodes/fragment/16/position = Vector2( -1360, 400 )
+nodes/fragment/connections = PoolIntArray( 5, 0, 8, 1, 9, 0, 10, 0, 10, 0, 8, 0, 8, 0, 11, 0, 10, 1, 11, 1, 10, 2, 11, 2, 3, 0, 14, 0, 15, 0, 5, 0, 16, 0, 5, 1, 12, 0, 0, 0, 2, 0, 12, 0, 11, 0, 3, 0, 14, 0, 12, 2, 2, 1, 0, 1 )
+
+[resource]
+resource_local_to_scene = true
+render_priority = 1
+shader = SubResource( 13 )
+shader_param/time_multiplier = -0.5
