@@ -7,7 +7,7 @@ Examples are developed using [fenix-hub/godot-engine.supabase](https://github.co
 
 ### List of examples
 - [**ToDot List**](/todo-list) (Multiplatform Todo list - following [Todo list demo](https://github.com/supabase/supabase/tree/master/examples/nextjs-todo-list) by [supabase](https://supabase.io/))
-- [**gdChat**](/realtime-chat) (Multiplatform Realtime chat - following [Chat demo](https://github.com/supabase/supabase/tree/master/examples/nextjs-slack-clone) by [supabase](https://supabase.io/))
+- [**SlackGD**](/slack-clone) (Multiplatform Realtime chat - following [Slack clone demo](https://github.com/supabase/supabase/tree/master/examples/nextjs-slack-clone) by [supabase](https://supabase.io/))
 - [**TicTacDot**](/tictactoe) (Multiplatform Realtime TicTacToe)
 - [**Godotgram**](/instagram-clone) (Multiplatform Instagram Clone)
 
