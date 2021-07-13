@@ -21,6 +21,8 @@ func initialize(created_at : String, id : int, inserted_at : String, slug : Stri
     self.id = id
     self.inserted_at = inserted_at
     self.slug = slug
+    
+    connect_client()
 
 func connect_client():
     realtime_client = Supabase.realtime.client()
@@ -28,9 +30,7 @@ func connect_client():
     realtime_client.connect_client()
 
 func _on_connected() -> void:
-    realtime_client.channel("public", "messages", "channel_id=eq.%s"%id)
-    .on("insert", self, "_on_insert")
-    .subscribe()
+    realtime_client.channel("public", "messages", "channel_id=eq.%s"%id).on("insert", self, "_on_insert").subscribe()
 
 func load_messages() -> void:
     if _loaded: return

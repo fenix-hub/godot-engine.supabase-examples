@@ -81,7 +81,6 @@ func _on_LineEdit_text_entered(new_text : String):
     $Slack/PanelContainer2/VBoxContainer/PanelContainer/PanelContainer/VBoxContainer/LineEdit.clear()
     var task : DatabaseTask = yield(RequestsManager.send_message(new_text, current_user.id, current_channel.id), "completed")
 
-
 func _on_Channels_item_selected():
     if channels_tree.get_selected().has_meta("channel"):
         set_current_channel(channels_tree.get_selected().get_meta("channel"))
