@@ -1,0 +1,228 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Reference",
+"class": "AuthTask",
+"language": "GDScript",
+"path": "res://addons/supabase/Auth/auth_task.gd"
+}, {
+"base": "VBoxContainer",
+"class": "Channel",
+"language": "GDScript",
+"path": "res://scn/classes/channel/channel.gd"
+}, {
+"base": "Control",
+"class": "CodeSnapshotInstance",
+"language": "GDScript",
+"path": "res://addons/code-snapshot/Instance/instance.gd"
+}, {
+"base": "Reference",
+"class": "DatabaseTask",
+"language": "GDScript",
+"path": "res://addons/supabase/Database/database_task.gd"
+}, {
+"base": "PanelContainer",
+"class": "DefaultButton",
+"language": "GDScript",
+"path": "res://supabase-ui/basic/button/default/default_button.gd"
+}, {
+"base": "PanelContainer",
+"class": "Message",
+"language": "GDScript",
+"path": "res://scn/classes/message/message.gd"
+}, {
+"base": "DefaultButton",
+"class": "OutlineButton",
+"language": "GDScript",
+"path": "res://supabase-ui/basic/button/outline/outline_button.gd"
+}, {
+"base": "DefaultButton",
+"class": "PrimaryButton",
+"language": "GDScript",
+"path": "res://supabase-ui/basic/button/primary/primary_button.gd"
+}, {
+"base": "Reference",
+"class": "RealtimeChannel",
+"language": "GDScript",
+"path": "res://addons/supabase/Realtime/realtime_channel.gd"
+}, {
+"base": "Node",
+"class": "RealtimeClient",
+"language": "GDScript",
+"path": "res://addons/supabase/Realtime/realtime_client.gd"
+}, {
+"base": "VBoxContainer",
+"class": "SCheckBox",
+"language": "GDScript",
+"path": "res://supabase-ui/data_input/checkbox/checkbox.gd"
+}, {
+"base": "Label",
+"class": "SErrorLabel",
+"language": "GDScript",
+"path": "res://supabase-ui/basic/typography/error_label/err_label.gd"
+}, {
+"base": "PanelContainer",
+"class": "SInput",
+"language": "GDScript",
+"path": "res://supabase-ui/data_input/input/input.gd"
+}, {
+"base": "Label",
+"class": "SLabel",
+"language": "GDScript",
+"path": "res://supabase-ui/basic/typography/base_label/label.gd"
+}, {
+"base": "DefaultButton",
+"class": "SLinkButton",
+"language": "GDScript",
+"path": "res://supabase-ui/basic/button/link/link_button.gd"
+}, {
+"base": "Node",
+"class": "StorageBucket",
+"language": "GDScript",
+"path": "res://addons/supabase/Storage/storage_bucket.gd"
+}, {
+"base": "Reference",
+"class": "StorageTask",
+"language": "GDScript",
+"path": "res://addons/supabase/Storage/storage_task.gd"
+}, {
+"base": "Node",
+"class": "SupabaseAuth",
+"language": "GDScript",
+"path": "res://addons/supabase/Auth/auth.gd"
+}, {
+"base": "Reference",
+"class": "SupabaseAuthError",
+"language": "GDScript",
+"path": "res://addons/supabase/Auth/auth_error.gd"
+}, {
+"base": "PanelContainer",
+"class": "SupabaseAuthPanel",
+"language": "GDScript",
+"path": "res://supabase-ui/components/auth/auth.gd"
+}, {
+"base": "Node",
+"class": "SupabaseDatabase",
+"language": "GDScript",
+"path": "res://addons/supabase/Database/database.gd"
+}, {
+"base": "Reference",
+"class": "SupabaseDatabaseError",
+"language": "GDScript",
+"path": "res://addons/supabase/Database/database_error.gd"
+}, {
+"base": "Reference",
+"class": "SupabaseQuery",
+"language": "GDScript",
+"path": "res://addons/supabase/Database/query.gd"
+}, {
+"base": "Node",
+"class": "SupabaseRealtime",
+"language": "GDScript",
+"path": "res://addons/supabase/Realtime/realtime.gd"
+}, {
+"base": "Node",
+"class": "SupabaseStorage",
+"language": "GDScript",
+"path": "res://addons/supabase/Storage/storage.gd"
+}, {
+"base": "Reference",
+"class": "SupabaseStorageError",
+"language": "GDScript",
+"path": "res://addons/supabase/Storage/storage_error.gd"
+}, {
+"base": "Reference",
+"class": "SupabaseUser",
+"language": "GDScript",
+"path": "res://addons/supabase/Auth/user.gd"
+}, {
+"base": "DefaultButton",
+"class": "TextButton",
+"language": "GDScript",
+"path": "res://supabase-ui/basic/button/text/text_button.gd"
+} ]
+_global_script_class_icons={
+"AuthTask": "",
+"Channel": "",
+"CodeSnapshotInstance": "",
+"DatabaseTask": "",
+"DefaultButton": "",
+"Message": "",
+"OutlineButton": "",
+"PrimaryButton": "",
+"RealtimeChannel": "",
+"RealtimeClient": "",
+"SCheckBox": "",
+"SErrorLabel": "",
+"SInput": "",
+"SLabel": "",
+"SLinkButton": "",
+"StorageBucket": "",
+"StorageTask": "",
+"SupabaseAuth": "",
+"SupabaseAuthError": "",
+"SupabaseAuthPanel": "",
+"SupabaseDatabase": "",
+"SupabaseDatabaseError": "",
+"SupabaseQuery": "",
+"SupabaseRealtime": "",
+"SupabaseStorage": "",
+"SupabaseStorageError": "",
+"SupabaseUser": "",
+"TextButton": ""
+}
+
+[application]
+
+config/name="supabase-demo.slack-clone"
+run/main_scene="res://scn/main/Control.tscn"
+config/icon="res://icon.svg"
+config/auto_accept_quit=false
+
+[autoload]
+
+Supabase="*res://addons/supabase/Supabase/supabase.gd"
+Utilities="*res://scn/scripts/utilities.gd"
+RequestsManager="*res://scn/scripts/requests_manager.gd"
+UsersManager="*res://scn/scripts/users_manager.gd"
+
+[debug]
+
+gdscript/warnings/enable=false
+
+[display]
+
+window/dpi/allow_hidpi=true
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/code-snapshot/plugin.cfg", "res://addons/supabase/plugin.cfg" )
+
+[global]
+
+quit=false
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+threads/thread_model=2
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"
+
+[supabase]
+
+config/supabaseUrl=""
+config/supabaseKey=""

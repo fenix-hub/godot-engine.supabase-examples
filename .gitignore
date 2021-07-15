@@ -1,10 +1,13 @@
 # Project specific files
 override.cfg
+export/
+addons/
 
 # Godot-specific ignores
 .import/
 export.cfg
 export_presets.cfg
+default_env.tres
 
 # Imported translations (automatically generated from CSV files)
 *.translation
