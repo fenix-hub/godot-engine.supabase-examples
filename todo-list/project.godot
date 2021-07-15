@@ -1,0 +1,90 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "HTTPRequest",
+"class": "SupabaseAuth",
+"language": "GDScript",
+"path": "res://addons/supabase/Auth/auth.gd"
+}, {
+"base": "Reference",
+"class": "SupabaseAuthError",
+"language": "GDScript",
+"path": "res://addons/supabase/Auth/auth_error.gd"
+}, {
+"base": "HTTPRequest",
+"class": "SupabaseDatabase",
+"language": "GDScript",
+"path": "res://addons/supabase/Database/database.gd"
+}, {
+"base": "Reference",
+"class": "SupabaseDatabaseError",
+"language": "GDScript",
+"path": "res://addons/supabase/Database/database_error.gd"
+}, {
+"base": "Reference",
+"class": "SupabaseQuery",
+"language": "GDScript",
+"path": "res://addons/supabase/Database/query.gd"
+}, {
+"base": "Reference",
+"class": "SupabaseUser",
+"language": "GDScript",
+"path": "res://addons/supabase/User/user.gd"
+}, {
+"base": "HBoxContainer",
+"class": "Task",
+"language": "GDScript",
+"path": "res://scn/Task/task.gd"
+} ]
+_global_script_class_icons={
+"SupabaseAuth": "",
+"SupabaseAuthError": "",
+"SupabaseDatabase": "",
+"SupabaseDatabaseError": "",
+"SupabaseQuery": "",
+"SupabaseUser": "",
+"Task": ""
+}
+
+[application]
+
+config/name="supabase-demo.todo-list"
+run/main_scene="res://scn/Main/main.tscn"
+config/icon="res://addons/supabase/icon.svg"
+
+[audio]
+
+default_bus_layout=""
+
+[autoload]
+
+Supabase="*res://addons/supabase/Supabase/supabase.gd"
+
+[display]
+
+window/dpi/allow_hidpi=true
+window/handheld/orientation="portrait"
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "supabase" )
+
+[rendering]
+
+vram_compression/import_etc=true
+environment/default_environment="res://default_env.tres"
+
+[supabase]
+
+config/supabaseUrl=""
+config/supabaseKey=""

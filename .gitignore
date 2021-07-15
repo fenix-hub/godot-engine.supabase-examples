@@ -1,5 +1,7 @@
 # Project specific files
 override.cfg
+export/
+addons/
 
 # Godot-specific ignores
 .import/
