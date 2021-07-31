@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://res/shaders/lerp_shader.tres" type="Material" id=1]
+[ext_resource path="res://scn/classes/media_preview/MediaPreview.gd" type="Script" id=2]
+[ext_resource path="res://res/imgs/bg.png" type="Texture" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.352941, 0.352941, 0.352941, 1 )
+corner_detail = 20
+
+[node name="MediaPreview" type="PanelContainer"]
+margin_right = 200.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 202, 202 )
+rect_clip_content = true
+mouse_default_cursor_shape = 2
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Image" type="TextureRect" parent="."]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 201.0
+margin_bottom = 201.0
+rect_min_size = Vector2( 200, 200 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Loader" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0.529412 )
+material = ExtResource( 1 )
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 201.0
+margin_bottom = 201.0
+rect_min_size = Vector2( 200, 200 )
+rect_pivot_offset = Vector2( 100, 100 )
+mouse_filter = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 7
+
+[connection signal="gui_input" from="." to="." method="_on_MediaPreview_gui_input"]

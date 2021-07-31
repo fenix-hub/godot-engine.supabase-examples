@@ -14,15 +14,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/supabase/Auth/auth_task.gd"
 }, {
+"base": "TextureRect",
+"class": "Avatar",
+"language": "GDScript",
+"path": "res://scn/classes/avatar/Avatar.gd"
+}, {
 "base": "VBoxContainer",
 "class": "Channel",
 "language": "GDScript",
 "path": "res://scn/classes/channel/channel.gd"
 }, {
-"base": "Control",
-"class": "CodeSnapshotInstance",
+"base": "VBoxContainer",
+"class": "DM",
 "language": "GDScript",
-"path": "res://addons/code-snapshot/Instance/instance.gd"
+"path": "res://scn/classes/dm/dm.gd"
 }, {
 "base": "Reference",
 "class": "DatabaseTask",
@@ -35,14 +40,34 @@ _global_script_classes=[ {
 "path": "res://supabase-ui/basic/button/default/default_button.gd"
 }, {
 "base": "PanelContainer",
+"class": "MediaPreview",
+"language": "GDScript",
+"path": "res://scn/classes/media_preview/MediaPreview.gd"
+}, {
+"base": "PanelContainer",
 "class": "Message",
 "language": "GDScript",
 "path": "res://scn/classes/message/message.gd"
+}, {
+"base": "TextButton",
+"class": "ModeButton",
+"language": "GDScript",
+"path": "res://supabase-ui/components/mode_btn/mode_btn.gd"
 }, {
 "base": "DefaultButton",
 "class": "OutlineButton",
 "language": "GDScript",
 "path": "res://supabase-ui/basic/button/outline/outline_button.gd"
+}, {
+"base": "SPopup",
+"class": "PopupMessageMenu",
+"language": "GDScript",
+"path": "res://scn/scenes/popup_message_menu/PopupMessageMenu.gd"
+}, {
+"base": "SPopup",
+"class": "PopupUser",
+"language": "GDScript",
+"path": "res://scn/scenes/popup_user/PopupUser.gd"
 }, {
 "base": "DefaultButton",
 "class": "PrimaryButton",
@@ -83,6 +108,16 @@ _global_script_classes=[ {
 "class": "SLinkButton",
 "language": "GDScript",
 "path": "res://supabase-ui/basic/button/link/link_button.gd"
+}, {
+"base": "PanelContainer",
+"class": "SPanel",
+"language": "GDScript",
+"path": "res://supabase-ui/basic/containers/panel/_panel.gd"
+}, {
+"base": "PopupPanel",
+"class": "SPopup",
+"language": "GDScript",
+"path": "res://supabase-ui/basic/containers/popup/_popup.gd"
 }, {
 "base": "Node",
 "class": "StorageBucket",
@@ -144,19 +179,34 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/supabase/Auth/user.gd"
 }, {
+"base": "Control",
+"class": "TImageHolder",
+"language": "GDScript",
+"path": "res://scn/scenes/thumbnail_image_holder/TImageHOlder.gd"
+}, {
 "base": "DefaultButton",
 "class": "TextButton",
 "language": "GDScript",
 "path": "res://supabase-ui/basic/button/text/text_button.gd"
+}, {
+"base": "PanelContainer",
+"class": "UserButton",
+"language": "GDScript",
+"path": "res://scn/classes/user_button/UserButton.gd"
 } ]
 _global_script_class_icons={
 "AuthTask": "",
+"Avatar": "",
 "Channel": "",
-"CodeSnapshotInstance": "",
+"DM": "",
 "DatabaseTask": "",
 "DefaultButton": "",
+"MediaPreview": "",
 "Message": "",
+"ModeButton": "",
 "OutlineButton": "",
+"PopupMessageMenu": "",
+"PopupUser": "",
 "PrimaryButton": "",
 "RealtimeChannel": "",
 "RealtimeClient": "",
@@ -165,6 +215,8 @@ _global_script_class_icons={
 "SInput": "",
 "SLabel": "",
 "SLinkButton": "",
+"SPanel": "",
+"SPopup": "",
 "StorageBucket": "",
 "StorageTask": "",
 "SupabaseAuth": "",
@@ -177,7 +229,9 @@ _global_script_class_icons={
 "SupabaseStorage": "",
 "SupabaseStorageError": "",
 "SupabaseUser": "",
-"TextButton": ""
+"TImageHolder": "",
+"TextButton": "",
+"UserButton": ""
 }
 
 [application]
@@ -193,6 +247,7 @@ Supabase="*res://addons/supabase/Supabase/supabase.gd"
 Utilities="*res://scn/scripts/utilities.gd"
 RequestsManager="*res://scn/scripts/requests_manager.gd"
 UsersManager="*res://scn/scripts/users_manager.gd"
+Globals="*res://scn/scripts/globals.gd"
 
 [debug]
 
@@ -201,14 +256,23 @@ gdscript/warnings/enable=false
 [display]
 
 window/dpi/allow_hidpi=true
+window/handheld/orientation="portrait"
+window/size/width.Android=512
+window/size/height.Android=300
+window/stretch/mode.Android="2d"
+window/stretch/aspect.Android="keep_width"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/code-snapshot/plugin.cfg", "res://addons/supabase/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/supabase/plugin.cfg" )
 
 [global]
 
 quit=false
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
 
 [physics]
 
@@ -216,13 +280,10 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
 threads/thread_model=2
 vram_compression/import_etc=true
-vram_compression/import_etc2=false
-environment/default_environment="res://default_env.tres"
 
 [supabase]
 
-config/supabaseUrl=""
-config/supabaseKey=""
+config/supabaseUrl="https://jamizubseepwdhvpjzcu.supabase.co"
+config/supabaseKey="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyNTk0MTc0MywiZXhwIjoxOTQxNTE3NzQzfQ.TqWo_l8Cy4l_0fLBDeKx6RUgAuST26FkB9Nj5OUip3Y"

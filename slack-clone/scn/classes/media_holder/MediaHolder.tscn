@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scn/classes/media_holder/MediaHolder.gd" type="Script" id=1]
+
+[node name="MediaHolder" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.858824 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Media" type="TextureRect" parent="."]
+anchor_left = 0.016
+anchor_right = 0.984
+anchor_bottom = 1.0
+margin_left = 47.616
+margin_top = 48.0
+margin_right = -47.616
+margin_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 7
+size_flags_vertical = 7
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="gui_input" from="." to="." method="_on_MediaHolder_gui_input"]

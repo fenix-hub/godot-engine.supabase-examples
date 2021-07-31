@@ -1,213 +1,49 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://supabase-ui/components/auth/Auth.tscn" type="PackedScene" id=1]
-[ext_resource path="res://supabase-ui/res/fonts/roboto/Roboto-Bold.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://supabase-ui/res/fonts/roboto/Roboto-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scn/scenes/slack/Slack.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scn/scenes/add_chanel_panel/AddChanelPanel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scn/main/main.gd" type="Script" id=4]
-[ext_resource path="res://scn/classes/channel/channel.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scn/scenes/update_user_panel/UpdateUserPanel.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scn/classes/media_holder/MediaHolder.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scn/scenes/add_dm_panel/AddDMPanel.tscn" type="PackedScene" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
-content_margin_left = 8.0
-content_margin_right = 8.0
-content_margin_top = 8.0
-content_margin_bottom = 8.0
-bg_color = Color( 0.247059, 0.054902, 0.25098, 1 )
-
-[sub_resource type="StyleBoxEmpty" id=2]
-
-[sub_resource type="StyleBoxEmpty" id=3]
-
-[sub_resource type="DynamicFont" id=4]
-font_data = ExtResource( 3 )
-
-[sub_resource type="Theme" id=5]
-default_font = SubResource( 4 )
-
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 1, 1, 1, 1 )
-
-[sub_resource type="StyleBoxFlat" id=7]
-content_margin_left = 8.0
-content_margin_right = 8.0
-content_margin_top = 8.0
-content_margin_bottom = 8.0
+resource_local_to_scene = true
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_top = 20.0
+content_margin_bottom = 20.0
 bg_color = Color( 1, 1, 1, 1 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-shadow_color = Color( 0, 0, 0, 0.0509804 )
-shadow_size = 5
-
-[sub_resource type="DynamicFont" id=8]
-size = 21
-font_data = ExtResource( 2 )
-
-[sub_resource type="StyleBoxFlat" id=9]
-content_margin_left = 0.0
-content_margin_right = 0.0
-content_margin_top = 0.0
-content_margin_bottom = 0.0
-bg_color = Color( 1, 1, 1, 1 )
-draw_center = false
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0, 0, 0, 1 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-corner_detail = 20
-
-[sub_resource type="StyleBoxEmpty" id=10]
-content_margin_left = 10.0
-content_margin_right = 10.0
-
-[sub_resource type="StyleBoxFlat" id=11]
-bg_color = Color( 0.898039, 0.898039, 0.898039, 1 )
-border_width_top = 1
-border_color = Color( 0.713726, 0.713726, 0.713726, 1 )
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 corner_detail = 20
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-channel_scene = ExtResource( 5 )
 
-[node name="Slack" type="HBoxContainer" parent="."]
+[node name="Slack" parent="." instance=ExtResource( 2 )]
 anchor_right = 1.0
-anchor_bottom = 1.0
-custom_constants/separation = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_right = 0.0
+focus_mode = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="Slack"]
-margin_right = 200.0
-margin_bottom = 600.0
-rect_min_size = Vector2( 200, 0 )
-custom_styles/panel = SubResource( 1 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Slack/PanelContainer"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 192.0
-margin_bottom = 592.0
-
-[node name="Channels" type="Tree" parent="Slack/PanelContainer/VBoxContainer"]
-margin_right = 184.0
-margin_bottom = 290.0
-size_flags_vertical = 3
-custom_styles/bg = SubResource( 2 )
-
-[node name="DMs" type="Tree" parent="Slack/PanelContainer/VBoxContainer"]
-margin_top = 294.0
-margin_right = 184.0
-margin_bottom = 584.0
-size_flags_vertical = 3
-custom_styles/bg = SubResource( 3 )
-
-[node name="PanelContainer2" type="PanelContainer" parent="Slack"]
-margin_left = 200.0
-margin_right = 1024.0
-margin_bottom = 600.0
-size_flags_horizontal = 3
-theme = SubResource( 5 )
-custom_styles/panel = SubResource( 6 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Slack/PanelContainer2"]
-margin_right = 824.0
-margin_bottom = 600.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 0
-
-[node name="Panel" type="PanelContainer" parent="Slack/PanelContainer2/VBoxContainer"]
-margin_right = 824.0
-margin_bottom = 52.0
-custom_styles/panel = SubResource( 7 )
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Slack/PanelContainer2/VBoxContainer/Panel"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 816.0
-margin_bottom = 44.0
-custom_constants/separation = 10
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="Slack/PanelContainer2/VBoxContainer/Panel/HBoxContainer"]
-margin_right = 36.0
-margin_bottom = 36.0
-rect_min_size = Vector2( 36, 36 )
-expand = true
-
-[node name="Label" type="Label" parent="Slack/PanelContainer2/VBoxContainer/Panel/HBoxContainer"]
-margin_left = 46.0
-margin_top = 5.0
-margin_right = 134.0
-margin_bottom = 31.0
-custom_fonts/font = SubResource( 8 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "#channel"
-
-[node name="ChannelContainer" type="ScrollContainer" parent="Slack/PanelContainer2/VBoxContainer"]
-margin_top = 52.0
-margin_right = 824.0
-margin_bottom = 470.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="PanelContainer" type="MarginContainer" parent="Slack/PanelContainer2/VBoxContainer"]
-margin_top = 470.0
-margin_right = 824.0
-margin_bottom = 600.0
-custom_constants/margin_right = 20
-custom_constants/margin_top = 20
-custom_constants/margin_left = 20
-custom_constants/margin_bottom = 20
-
-[node name="PanelContainer" type="PanelContainer" parent="Slack/PanelContainer2/VBoxContainer/PanelContainer"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 804.0
-margin_bottom = 110.0
-rect_min_size = Vector2( 0, 90 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_styles/panel = SubResource( 9 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Slack/PanelContainer2/VBoxContainer/PanelContainer/PanelContainer"]
-show_behind_parent = true
-margin_right = 784.0
-margin_bottom = 90.0
-custom_constants/separation = 0
-
-[node name="LineEdit" type="LineEdit" parent="Slack/PanelContainer2/VBoxContainer/PanelContainer/PanelContainer/VBoxContainer"]
-margin_right = 784.0
-margin_bottom = 45.0
-size_flags_vertical = 3
-custom_styles/normal = SubResource( 10 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-placeholder_text = "Write something"
-
-[node name="PanelContainer" type="PanelContainer" parent="Slack/PanelContainer2/VBoxContainer/PanelContainer/PanelContainer/VBoxContainer"]
-margin_top = 45.0
-margin_right = 784.0
-margin_bottom = 90.0
-size_flags_vertical = 3
-custom_styles/panel = SubResource( 11 )
+[node name="MediaHolder" parent="." instance=ExtResource( 6 )]
+visible = false
 
 [node name="HOVER" type="ColorRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
@@ -217,21 +53,55 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Auth" parent="." instance=ExtResource( 1 )]
-anchor_left = 0.5
+[node name="UpdateUserPanel" parent="." instance=ExtResource( 5 )]
+visible = false
+anchor_left = 0.0
+anchor_right = 1.0
+margin_left = 368.0
+margin_top = -166.0
+margin_right = -368.0
+margin_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AddDMPanel" parent="." instance=ExtResource( 7 )]
+visible = false
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -276.0
-margin_top = -240.0
-margin_right = 277.0
-margin_bottom = 243.0
+margin_left = 184.0
+margin_top = -151.0
+margin_right = -184.0
+margin_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_styles/panel = SubResource( 1 )
+
+[node name="AddChanelPanel" parent="." instance=ExtResource( 3 )]
+visible = false
+anchor_left = 0.0
+anchor_right = 1.0
+margin_left = 250.0
+margin_right = -250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Auth" parent="." instance=ExtResource( 1 )]
+visible = false
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 168.0
+margin_top = -233.0
+margin_right = -168.0
+margin_bottom = 233.0
 grow_horizontal = 2
 grow_vertical = 2
 app_name = "Slack Clone"
 
-[connection signal="item_selected" from="Slack/PanelContainer/VBoxContainer/Channels" to="." method="_on_Channels_item_selected"]
-[connection signal="text_entered" from="Slack/PanelContainer2/VBoxContainer/PanelContainer/PanelContainer/VBoxContainer/LineEdit" to="." method="_on_LineEdit_text_entered"]
+[connection signal="hide_update_user" from="UpdateUserPanel" to="." method="_on_UpdateUserPanel_hide_update_user"]
+[connection signal="hide_add_dm_panel" from="AddDMPanel" to="." method="_on_AddDMPanel_hide_add_dm_panel"]
+[connection signal="send_dm_to_user" from="AddDMPanel" to="." method="_on_AddDMPanel_send_dm_to_user"]
+[connection signal="hide_add_channel" from="AddChanelPanel" to="." method="_on_AddChanelPanel_hide_add_channel"]
 [connection signal="error" from="Auth" to="." method="_on_Auth_error"]
 [connection signal="signed_in" from="Auth" to="." method="_on_Auth_signed_in"]
 [connection signal="signed_up" from="Auth" to="." method="_on_Auth_signed_up"]
