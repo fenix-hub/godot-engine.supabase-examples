@@ -285,5 +285,5 @@ vram_compression/import_etc=true
 
 [supabase]
 
-config/supabaseUrl="https://jamizubseepwdhvpjzcu.supabase.co"
-config/supabaseKey="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyNTk0MTc0MywiZXhwIjoxOTQxNTE3NzQzfQ.TqWo_l8Cy4l_0fLBDeKx6RUgAuST26FkB9Nj5OUip3Y"
+config/supabaseUrl=""
+config/supabaseKey=""
