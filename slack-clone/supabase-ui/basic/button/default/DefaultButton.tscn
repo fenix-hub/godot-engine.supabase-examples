@@ -17,10 +17,12 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
+disabled = false
 icon_enabled = false
 texture = null
 expand = false
 size = Vector2( 24, 24 )
+text_enabled = true
 text = "Default Button"
 font_size = 15
 
@@ -34,9 +36,8 @@ mouse_filter = 2
 
 [node name="Icon" type="TextureRect" parent="ButtonContainer"]
 visible = false
-modulate = Color( 0.254902, 0.254902, 0.254902, 1 )
-margin_right = 32.0
-margin_bottom = 32.0
+margin_right = 24.0
+margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 mouse_filter = 2
 size_flags_vertical = 4

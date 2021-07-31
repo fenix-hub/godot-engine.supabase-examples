@@ -1,0 +1,101 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scn/scenes/add_dm_panel/AddDMPanel.gd" type="Script" id=1]
+[ext_resource path="res://supabase-ui/basic/containers/panel/Panel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://supabase-ui/res/fonts/roboto/Roboto-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://supabase-ui/basic/button/outline/OutlineButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://supabase-ui/basic/typography/base_label/BaseLabel.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scn/classes/user_button/UserButton.tscn" type="PackedScene" id=6]
+
+[sub_resource type="StyleBoxFlat" id=1]
+resource_local_to_scene = true
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_top = 20.0
+content_margin_bottom = 20.0
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 20
+
+[sub_resource type="DynamicFont" id=2]
+resource_local_to_scene = true
+size = 22
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+resource_local_to_scene = true
+resource_name = "OutlineButton"
+content_margin_left = 13.0
+content_margin_right = 13.0
+content_margin_top = 9.0
+content_margin_bottom = 9.0
+bg_color = Color( 1, 1, 1, 0 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.647059, 0.647059, 0.647059, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 20
+shadow_color = Color( 0, 0, 0, 0.0392157 )
+shadow_offset = Vector2( 0, 1.5 )
+anti_aliasing = false
+
+[node name="Panel" instance=ExtResource( 2 )]
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+user_button_scn = ExtResource( 6 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." index="0"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 580.0
+
+[node name="Label" parent="VBoxContainer" index="0" instance=ExtResource( 5 )]
+margin_right = 984.0
+margin_bottom = 27.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.121569, 0.121569, 0.121569, 1 )
+text = "Send a Direct Message to..."
+align = 1
+valign = 1
+level = 2
+font_size = 22
+
+[node name="UserListContainer" type="ScrollContainer" parent="VBoxContainer" index="1"]
+margin_top = 31.0
+margin_right = 984.0
+margin_bottom = 520.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="UserList" type="VBoxContainer" parent="VBoxContainer/UserListContainer" index="0"]
+margin_right = 984.0
+margin_bottom = 489.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="OutlineButton" parent="VBoxContainer" index="2" instance=ExtResource( 4 )]
+margin_left = 455.0
+margin_top = 524.0
+margin_right = 528.0
+margin_bottom = 560.0
+size_flags_horizontal = 4
+custom_styles/panel = SubResource( 3 )
+disabled = false
+text_enabled = true
+text = "Cancel"
+
+[connection signal="visibility_changed" from="." to="." method="_on_Panel_visibility_changed"]
+[connection signal="pressed" from="VBoxContainer/OutlineButton" to="." method="_on_OutlineButton_pressed"]

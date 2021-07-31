@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scn/scenes/popup_message_menu/PopupMessageMenu.gd" type="Script" id=1]
+[ext_resource path="res://res/imgs/icons/delete_forever_white_36dp.svg" type="Texture" id=2]
+[ext_resource path="res://supabase-ui/basic/button/default/DefaultButton.tscn" type="PackedScene" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxFlat" id=2]
+resource_local_to_scene = true
+content_margin_left = 13.0
+content_margin_right = 13.0
+content_margin_top = 9.0
+content_margin_bottom = 9.0
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 20
+shadow_color = Color( 0, 0, 0, 0.0392157 )
+shadow_size = 1
+shadow_offset = Vector2( 0, 1.5 )
+anti_aliasing = false
+
+[node name="PopupMessageMenu" type="PopupPanel"]
+margin_right = 163.0
+margin_bottom = 42.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+margin_right = 163.0
+margin_bottom = 42.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Delete" parent="Buttons" instance=ExtResource( 3 )]
+margin_right = 163.0
+margin_bottom = 42.0
+custom_styles/panel = SubResource( 2 )
+icon_enabled = true
+texture = ExtResource( 2 )
+expand = true
+text = "Delete Message"
+
+[connection signal="pressed" from="Buttons/Delete" to="." method="_on_Delete_pressed"]

@@ -1,0 +1,143 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scn/scenes/input_container/InputContainer.gd" type="Script" id=1]
+[ext_resource path="res://scn/scenes/thumbnail_image_holder/T_ImageHolder.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scn/scenes/input_container/InputContainer.tres" type="StyleBox" id=3]
+[ext_resource path="res://res/imgs/icons/send_white_36dp.svg" type="Texture" id=4]
+[ext_resource path="res://supabase-ui/basic/button/primary/PrimaryButton.tscn" type="PackedScene" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 1.0
+content_margin_right = 1.0
+content_margin_top = 1.0
+content_margin_bottom = 1.0
+bg_color = Color( 1, 1, 1, 1 )
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.14902, 0.14902, 0.14902, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 20
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+content_margin_left = 10.0
+content_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id=4]
+resource_local_to_scene = true
+resource_name = "PrimaryButton"
+content_margin_left = 7.0
+content_margin_right = 7.0
+content_margin_top = 7.0
+content_margin_bottom = 7.0
+bg_color = Color( 0.75, 0.75, 0.75, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 20
+shadow_color = Color( 0, 0, 0, 0.0392157 )
+shadow_size = 1
+shadow_offset = Vector2( 0, 1.5 )
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[node name="InputContainer" type="MarginContainer"]
+anchor_right = 1.0
+margin_bottom = 130.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+image_holder_scene = ExtResource( 2 )
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 0, 90 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 983.0
+margin_bottom = 89.0
+grow_vertical = 2
+size_flags_vertical = 3
+custom_constants/separation = 0
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/VBoxContainer"]
+margin_right = 982.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 0, 40 )
+size_flags_vertical = 3
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+custom_colors/cursor_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+placeholder_text = "Write something"
+placeholder_alpha = 0.2
+caret_blink = true
+
+[node name="Imgs" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+margin_top = 44.0
+margin_right = 982.0
+margin_bottom = 44.0
+grow_vertical = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+margin_top = 44.0
+margin_right = 982.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 0, 40 )
+size_flags_vertical = 3
+custom_styles/panel = ExtResource( 3 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer"]
+margin_top = 1.0
+margin_right = 982.0
+margin_bottom = 44.0
+
+[node name="SendBtn" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer" instance=ExtResource( 5 )]
+margin_left = 934.0
+margin_top = 4.0
+margin_right = 968.0
+margin_bottom = 38.0
+size_flags_horizontal = 10
+size_flags_vertical = 4
+custom_styles/panel = SubResource( 4 )
+enable_loading = true
+disabled = true
+icon_enabled = true
+texture = ExtResource( 4 )
+expand = true
+size = Vector2( 20, 20 )
+text_enabled = false
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+margin_left = 972.0
+margin_right = 982.0
+margin_bottom = 43.0
+custom_styles/separator = SubResource( 5 )
+custom_constants/separation = 10
+
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/LineEdit" to="." method="_on_LineEdit_text_changed"]
+[connection signal="text_entered" from="PanelContainer/VBoxContainer/LineEdit" to="." method="_on_text_entered"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/SendBtn" to="." method="_on_SendBtn_pressed"]

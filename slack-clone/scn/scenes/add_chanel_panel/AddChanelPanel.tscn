@@ -1,0 +1,173 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://supabase-ui/basic/typography/base_label/BaseLabel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://supabase-ui/basic/button/primary/PrimaryButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://supabase-ui/data_input/input/Input.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scn/scenes/add_chanel_panel/AddChanelPanel.gd" type="Script" id=4]
+[ext_resource path="res://supabase-ui/res/fonts/roboto/Roboto-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://supabase-ui/basic/button/default/DefaultButton.tscn" type="PackedScene" id=9]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_top = 20.0
+content_margin_bottom = 20.0
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 20
+
+[sub_resource type="DynamicFont" id=10]
+resource_local_to_scene = true
+size = 19
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 15
+font_data = ExtResource( 6 )
+
+[sub_resource type="Theme" id=5]
+resource_local_to_scene = true
+default_font = SubResource( 4 )
+
+[sub_resource type="StyleBoxEmpty" id=6]
+resource_local_to_scene = true
+content_margin_left = 15.0
+content_margin_right = 15.0
+content_margin_top = 15.0
+content_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxFlat" id=8]
+resource_local_to_scene = true
+resource_name = "DefaultButton"
+content_margin_left = 13.0
+content_margin_right = 13.0
+content_margin_top = 9.0
+content_margin_bottom = 9.0
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 20
+shadow_color = Color( 0, 0, 0, 0.0392157 )
+shadow_size = 1
+shadow_offset = Vector2( 0, 1.5 )
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=9]
+resource_local_to_scene = true
+resource_name = "PrimaryButton"
+content_margin_left = 13.0
+content_margin_right = 13.0
+content_margin_top = 9.0
+content_margin_bottom = 9.0
+bg_color = Color( 0.75, 0.75, 0.75, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 20
+shadow_color = Color( 0, 0, 0, 0.0392157 )
+shadow_size = 1
+shadow_offset = Vector2( 0, 1.5 )
+anti_aliasing = false
+
+[node name="AddChanelPanel" type="PanelContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -228.0
+margin_top = -153.0
+margin_right = 229.0
+margin_bottom = 154.0
+mouse_filter = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 437.0
+margin_bottom = 287.0
+
+[node name="Label" parent="VBoxContainer" instance=ExtResource( 1 )]
+margin_right = 417.0
+margin_bottom = 23.0
+custom_fonts/font = SubResource( 10 )
+text = "Add a new Channel"
+align = 1
+level = 3
+font_size = 19
+
+[node name="Name" parent="VBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 27.0
+margin_right = 417.0
+margin_bottom = 121.0
+theme = SubResource( 5 )
+custom_styles/panel = SubResource( 6 )
+input_name = "name"
+
+[node name="Description" parent="VBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 125.0
+margin_right = 417.0
+margin_bottom = 219.0
+theme = SubResource( 5 )
+custom_styles/panel = SubResource( 6 )
+input_name = "description"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+margin_top = 223.0
+margin_right = 417.0
+margin_bottom = 227.0
+custom_styles/separator = SubResource( 7 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 231.0
+margin_right = 417.0
+margin_bottom = 267.0
+alignment = 1
+
+[node name="Cancel" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 9 )]
+margin_right = 73.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 8 )
+text = "Cancel"
+
+[node name="Confirm" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 336.0
+margin_right = 417.0
+custom_styles/panel = SubResource( 9 )
+enable_loading = true
+disabled = true
+expand = true
+text = "Confirm"
+
+[connection signal="gui_input" from="." to="." method="_on_Panel_gui_input"]
+[connection signal="text_changed" from="VBoxContainer/Name" to="." method="_on_Name_text_changed"]
+[connection signal="text_changed" from="VBoxContainer/Description" to="." method="_on_Description_text_changed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Cancel" to="." method="_on_Cancel_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Confirm" to="." method="_on_Confirm_pressed"]

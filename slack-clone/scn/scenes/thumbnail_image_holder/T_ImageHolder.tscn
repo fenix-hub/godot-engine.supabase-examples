@@ -1,0 +1,94 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scn/scenes/thumbnail_image_holder/TImageHOlder.gd" type="Script" id=3]
+[ext_resource path="res://res/shaders/round_avatar.tres" type="Material" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.329412, 0.329412, 0.329412, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.231373, 0.231373, 0.231373, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+
+[node name="PanelContainer" type="Control"]
+margin_right = 83.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 100, 100 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -42.0
+margin_top = -42.0
+margin_right = 42.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 82, 82 )
+mouse_filter = 1
+color = Color( 0.635294, 0.635294, 0.635294, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = ExtResource( 4 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -40.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 80, 80 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -24.0
+margin_top = 3.0
+margin_right = -4.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 20, 20 )
+mouse_filter = 1
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+text = "x"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="mouse_entered" from="." to="." method="_on_PanelContainer_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_PanelContainer_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

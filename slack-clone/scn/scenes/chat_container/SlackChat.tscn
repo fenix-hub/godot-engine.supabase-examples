@@ -1,0 +1,127 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://scn/scenes/chat_container/SlackChat.gd" type="Script" id=1]
+[ext_resource path="res://scn/scenes/input_container2/InputContainer2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://supabase-ui/basic/typography/base_label/BaseLabel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://supabase-ui/res/fonts/roboto/Roboto-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://supabase-ui/res/fonts/roboto/Roboto-Bold.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://scn/scripts/filedrop_handler.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 4 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+shadow_color = Color( 0, 0, 0, 0.0509804 )
+shadow_size = 5
+
+[sub_resource type="DynamicFont" id=5]
+resource_local_to_scene = true
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 17
+font_data = ExtResource( 4 )
+
+[node name="SlackChat" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 500, 0 )
+size_flags_horizontal = 3
+theme = SubResource( 2 )
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="VBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+
+[node name="Panel" type="PanelContainer" parent="Container"]
+margin_right = 1024.0
+margin_bottom = 52.0
+custom_styles/panel = SubResource( 4 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/Panel"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 1016.0
+margin_bottom = 44.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Container/Panel/HBoxContainer"]
+margin_bottom = 36.0
+rect_min_size = Vector2( 0, 36 )
+expand = true
+
+[node name="Name" parent="Container/Panel/HBoxContainer" instance=ExtResource( 3 )]
+margin_left = 10.0
+margin_right = 10.0
+margin_bottom = 36.0
+grow_horizontal = 0
+size_flags_horizontal = 9
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.121569, 0.121569, 0.121569, 1 )
+valign = 1
+
+[node name="Description" type="Label" parent="Container/Panel/HBoxContainer"]
+margin_left = 20.0
+margin_right = 1008.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.623529, 0.623529, 0.623529, 1 )
+text = "description"
+valign = 1
+autowrap = true
+
+[node name="ChannelContainer" type="ScrollContainer" parent="Container"]
+margin_top = 52.0
+margin_right = 1024.0
+margin_bottom = 492.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="InputContainer" parent="Container" instance=ExtResource( 2 )]
+anchor_right = 0.0
+margin_top = 492.0
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="FileDropHandler" type="Control" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+mouse_filter = 2
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Container/InputContainer" to="." method="_on_InputContainer_pressed"]
+[connection signal="files_dropped" from="FileDropHandler" to="Container/InputContainer" method="load_images"]

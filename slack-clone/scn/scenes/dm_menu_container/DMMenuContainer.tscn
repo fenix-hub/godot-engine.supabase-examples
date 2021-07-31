@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://res/imgs/icons/arrow_drop_down_white_24dp.svg" type="Texture" id=1]
+[ext_resource path="res://supabase-ui/basic/button/text/TextButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scn/scenes/dm_menu_container/DMMenuContainer.gd" type="Script" id=3]
+[ext_resource path="res://res/imgs/icons/arrow_right_white_24dp.svg" type="Texture" id=4]
+[ext_resource path="res://res/imgs/icons/add_white_24dp.svg" type="Texture" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+resource_local_to_scene = true
+resource_name = "TextButton"
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 1, 1, 1, 0 )
+border_color = Color( 1, 1, 1, 0 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 20
+shadow_color = Color( 0, 0, 0, 0.0392157 )
+shadow_offset = Vector2( 0, 1.5 )
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=2]
+resource_local_to_scene = true
+resource_name = "TextButton"
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 1, 1, 1, 0 )
+border_color = Color( 1, 1, 1, 0 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 20
+shadow_color = Color( 0, 0, 0, 0.0392157 )
+shadow_offset = Vector2( 0, 1.5 )
+anti_aliasing = false
+
+[node name="DMs" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+channel_btn_scn = ExtResource( 2 )
+collapsed_texture = ExtResource( 1 )
+uncollapsed_texture = ExtResource( 4 )
+
+[node name="Container" type="HBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 34.0
+custom_constants/separation = 3
+
+[node name="TextButton" parent="Container" instance=ExtResource( 2 )]
+margin_right = 993.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 1 )
+icon_enabled = true
+texture = ExtResource( 1 )
+expand = true
+text = "Direct Messages"
+font_size = 17
+
+[node name="AddDM" parent="Container" instance=ExtResource( 2 )]
+margin_left = 996.0
+margin_top = 3.0
+margin_right = 1024.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+custom_styles/panel = SubResource( 2 )
+icon_enabled = true
+texture = ExtResource( 5 )
+expand = true
+size = Vector2( 18, 18 )
+text_enabled = false
+
+[node name="ChannelButtons" type="VBoxContainer" parent="."]
+margin_top = 38.0
+margin_right = 1024.0
+margin_bottom = 38.0
+custom_constants/separation = 0
+
+[connection signal="pressed" from="Container/TextButton" to="." method="_on_TextButton_pressed"]
+[connection signal="pressed" from="Container/AddDM" to="." method="_on_AddDM_pressed"]
