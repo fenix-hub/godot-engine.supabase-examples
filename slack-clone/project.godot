@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scn/classes/channel/channel.gd"
 }, {
+"base": "Control",
+"class": "CodeSnapshotInstance",
+"language": "GDScript",
+"path": "res://addons/code-snapshot/Instance/instance.gd"
+}, {
 "base": "VBoxContainer",
 "class": "DM",
 "language": "GDScript",
@@ -198,6 +203,7 @@ _global_script_class_icons={
 "AuthTask": "",
 "Avatar": "",
 "Channel": "",
+"CodeSnapshotInstance": "",
 "DM": "",
 "DatabaseTask": "",
 "DefaultButton": "",
@@ -260,11 +266,11 @@ window/handheld/orientation="portrait"
 window/size/width.Android=512
 window/size/height.Android=300
 window/stretch/mode.Android="2d"
-window/stretch/aspect.Android="keep_width"
+window/stretch/aspect.Android="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/supabase/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/code-snapshot/plugin.cfg", "res://addons/supabase/plugin.cfg" )
 
 [global]
 

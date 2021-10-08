@@ -9,7 +9,42 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "HTTPRequest",
+"base": "Reference",
+"class": "AuthTask",
+"language": "GDScript",
+"path": "res://addons/supabase/Auth/auth_task.gd"
+}, {
+"base": "Reference",
+"class": "DatabaseTask",
+"language": "GDScript",
+"path": "res://addons/supabase/Database/database_task.gd"
+}, {
+"base": "Control",
+"class": "LoadingScene",
+"language": "GDScript",
+"path": "res://scn/Loading/loading.gd"
+}, {
+"base": "Reference",
+"class": "RealtimeChannel",
+"language": "GDScript",
+"path": "res://addons/supabase/Realtime/realtime_channel.gd"
+}, {
+"base": "Node",
+"class": "RealtimeClient",
+"language": "GDScript",
+"path": "res://addons/supabase/Realtime/realtime_client.gd"
+}, {
+"base": "Node",
+"class": "StorageBucket",
+"language": "GDScript",
+"path": "res://addons/supabase/Storage/storage_bucket.gd"
+}, {
+"base": "Reference",
+"class": "StorageTask",
+"language": "GDScript",
+"path": "res://addons/supabase/Storage/storage_task.gd"
+}, {
+"base": "Node",
 "class": "SupabaseAuth",
 "language": "GDScript",
 "path": "res://addons/supabase/Auth/auth.gd"
@@ -19,7 +54,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/supabase/Auth/auth_error.gd"
 }, {
-"base": "HTTPRequest",
+"base": "Node",
 "class": "SupabaseDatabase",
 "language": "GDScript",
 "path": "res://addons/supabase/Database/database.gd"
@@ -34,6 +69,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/supabase/Database/query.gd"
 }, {
+"base": "Node",
+"class": "SupabaseRealtime",
+"language": "GDScript",
+"path": "res://addons/supabase/Realtime/realtime.gd"
+}, {
+"base": "Node",
+"class": "SupabaseStorage",
+"language": "GDScript",
+"path": "res://addons/supabase/Storage/storage.gd"
+}, {
+"base": "Reference",
+"class": "SupabaseStorageError",
+"language": "GDScript",
+"path": "res://addons/supabase/Storage/storage_error.gd"
+}, {
 "base": "Reference",
 "class": "SupabaseUser",
 "language": "GDScript",
@@ -45,11 +95,21 @@ _global_script_classes=[ {
 "path": "res://scn/Task/task.gd"
 } ]
 _global_script_class_icons={
+"AuthTask": "",
+"DatabaseTask": "",
+"LoadingScene": "",
+"RealtimeChannel": "",
+"RealtimeClient": "",
+"StorageBucket": "",
+"StorageTask": "",
 "SupabaseAuth": "",
 "SupabaseAuthError": "",
 "SupabaseDatabase": "",
 "SupabaseDatabaseError": "",
 "SupabaseQuery": "",
+"SupabaseRealtime": "",
+"SupabaseStorage": "",
+"SupabaseStorageError": "",
 "SupabaseUser": "",
 "Task": ""
 }
@@ -77,7 +137,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "supabase" )
+enabled=PoolStringArray( "res://addons/supabase/plugin.cfg" )
 
 [rendering]
 
